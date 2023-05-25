@@ -4,16 +4,17 @@ import { Server } from "socket.io";
 import config from "./config/config";
 
 const app: Application = express();
+app.get("/health", (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).json({ success: "true" });
+  next();
+});
+
 const server = createServer(app);
+
 const io = new Server(server, {
   cors: {
     origin: config.webSocketOriginWhitelist,
   },
-});
-
-app.get("/health", (req: Request, res: Response, next: NextFunction) => {
-  res.status(200).json({ success: "true" });
-  next();
 });
 io.on("connection", (socket) => {
   console.log(`WebSocket connection established with socket ID ${socket.id}.`);
