@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 import MessageService from "../services/messageService";
 
 class MessageController {
@@ -7,7 +7,7 @@ class MessageController {
     this.messageService = new MessageService();
   }
 
-  createMessage = async (req: Request, res: Response, next: NextFunction) => {
+  createMessage = async (req: Request, res: Response) => {
     try {
       const response = await this.messageService.createMessage(
         req.body.senderPrivileges,
@@ -20,7 +20,7 @@ class MessageController {
     }
   };
 
-  getMessage = async (req: Request, res: Response, next: NextFunction) => {
+  getMessage = async (req: Request, res: Response) => {
     try {
       const response = await this.messageService.getMessage(
         Number(req.params.id)
@@ -36,7 +36,7 @@ class MessageController {
     }
   };
 
-  updateMessage = async (req: Request, res: Response, next: NextFunction) => {
+  updateMessage = async (req: Request, res: Response) => {
     try {
       const response = await this.messageService.updateMessage(
         Number(req.params.id),
@@ -53,7 +53,7 @@ class MessageController {
     }
   };
 
-  deleteMessage = async (req: Request, res: Response, next: NextFunction) => {
+  deleteMessage = async (req: Request, res: Response) => {
     try {
       const response = await this.messageService.deleteMessage(
         Number(req.params.id)
