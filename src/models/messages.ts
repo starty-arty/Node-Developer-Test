@@ -14,20 +14,24 @@ module.exports = (sequelize: Sequelize) => {
   Messages.init(
     {
       id: {
+        field: "id",
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      sender_privileges: {
+      senderPrivileges: {
+        field: "sender_privileges",
         type: DataTypes.ENUM("member", "admin"),
         allowNull: false,
       },
       content: {
+        field: "content",
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      sent_at: {
+      sentAt: {
+        field: "sent_at",
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: sequelize.fn("current_timestamp"),
