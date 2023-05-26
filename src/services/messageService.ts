@@ -1,4 +1,5 @@
 import db from "../models";
+import { Transaction } from "sequelize";
 
 class messageService {
   createMessage = async (senderPrivileges: string, content: string) => {
@@ -13,8 +14,17 @@ class messageService {
   };
 
   updateMessage = async (id: number, content: string) => {
-    const response = await db.Messages.update({ content }, { where: { id } });
-    return { messageFound: !!response[0] };
+    const response = await db.sequelize.transaction(async (t: Transaction) => {
+      const message = await db.Messages.findOne({
+        where: { id },
+        transaction: t,
+      });
+      if (!message) return { messageFound: false };
+
+      await db.Messages.update({ content }, { where: { id }, transaction: t });
+      return { messageFound: true };
+    });
+    return response;
   };
 
   deleteMessage = async (id: number) => {
