@@ -1,14 +1,14 @@
 import express, { Application, Request, Response, NextFunction } from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import { connectToDatabase } from "./database/connector";
+import bodyParser from "body-parser";
+import connectToDatabase from "./database/connector";
 import config from "./config/config";
+import messageRouter from "./routers/messageRouter";
 
 const app: Application = express();
-app.get("/health", (req: Request, res: Response, next: NextFunction) => {
-  res.status(200).json({ success: "true" });
-  next();
-});
+app.use(bodyParser.json());
+app.use("/", messageRouter);
 
 const server = createServer(app);
 

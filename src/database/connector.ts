@@ -1,6 +1,6 @@
 import db from "../models";
 
-export const connectToDatabase = async () => {
+const connectToDatabase = async () => {
   try {
     await db.sequelize.authenticate();
     console.log("Database connected successfully.");
@@ -8,3 +8,5 @@ export const connectToDatabase = async () => {
     console.error("Database connection failed.", error);
   }
 };
+
+export default connectToDatabase;
