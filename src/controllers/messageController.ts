@@ -16,7 +16,7 @@ class MessageController {
       res.status(200).json({ success: true, data: response });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ success: false });
+      res.status(500).json({ success: false, error: "Internal server error." });
     }
   };
 
@@ -28,11 +28,11 @@ class MessageController {
       if (response.messageFound) {
         res.status(200).json({ success: true, data: response.data });
       } else {
-        res.status(404).json({ success: false });
+        res.status(404).json({ success: false, error: "Message not found." });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ success: false });
+      res.status(500).json({ success: false, error: "Internal server error." });
     }
   };
 
@@ -45,11 +45,11 @@ class MessageController {
       if (response.messageFound) {
         res.status(200).json({ success: true });
       } else {
-        res.status(404).json({ success: false });
+        res.status(404).json({ success: false, error: "Message not found." });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ success: false });
+      res.status(500).json({ success: false, error: "Internal server error." });
     }
   };
 
@@ -61,11 +61,11 @@ class MessageController {
       if (response.messageFound) {
         res.status(200).json({ success: true });
       } else {
-        res.status(404).json({ success: false });
+        res.status(404).json({ success: false, error: "Message not found." });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ success: false });
+      res.status(500).json({ success: false, error: "Internal server error." });
     }
   };
 }
