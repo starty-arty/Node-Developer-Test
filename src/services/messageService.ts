@@ -1,6 +1,7 @@
 import db from "../models";
 import { Sequelize } from "sequelize";
 import { Transaction, Model } from "sequelize";
+import { PaginationDetails } from "../types";
 
 class messageService {
   createMessage = async (senderPrivileges: string, content: string) => {
@@ -33,9 +34,13 @@ class messageService {
     return { messageFound: !!response };
   };
 
-  getAllMessages = async () => {
-    const response = await db.Messages.findAll({ order: Sequelize.col("id") });
-    return response.map((message: Model) => message.dataValues);
+  getAllMessages = async (paginationDetails: PaginationDetails) => {
+    let response = await db.Messages.findAndCountAll({
+      ...paginationDetails,
+      order: Sequelize.col("id"),
+    });
+    response.rows = response.rows.map((row: Model) => row.dataValues);
+    return response;
   };
 }
 

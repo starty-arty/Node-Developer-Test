@@ -71,8 +71,27 @@ class MessageController {
 
   getAllMessages = async (req: Request, res: Response) => {
     try {
-      const response = await this.messageService.getAllMessages();
-      res.status(200).json({ success: true, data: response });
+      const paginationDetails = {
+        limit: Number(req.query.limit),
+        offset: Number(req.skip),
+      };
+
+      const response = await this.messageService.getAllMessages(
+        paginationDetails
+      );
+      const pageCount = Math.ceil(response.count / paginationDetails.limit);
+
+      res.status(200).json({
+        success: true,
+        count: response.count,
+        next: res.locals.paginate.hasNextPages(pageCount)
+          ? res.locals.paginate.href(false)
+          : null,
+        previous: res.locals.paginate.hasPreviousPages
+          ? res.locals.paginate.href(true)
+          : null,
+        data: response.rows,
+      });
     } catch (error) {
       console.error(error);
       res.status(500).json({ success: false, error: "Internal server error." });

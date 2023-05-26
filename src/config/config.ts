@@ -12,4 +12,8 @@ export default {
     database: process.env.MYSQL_DATABASE || "",
   },
   maxMessageLength: 200,
+  pagination: {
+    defaultPageSize: 10,
+    maxPageSize: 50,
+  },
 };

@@ -1,4 +1,5 @@
 import express from "express";
+import paginate from "express-paginate";
 import MessageController from "../controllers/messageController";
 import validate from "../validators";
 import {
@@ -7,6 +8,7 @@ import {
   getMessageValidator,
   updateMessageValidator,
 } from "../validators/messageValidators";
+import config from "../config/config";
 
 const router = express.Router();
 const messageController = new MessageController();
@@ -39,6 +41,13 @@ router.delete(
   messageController.deleteMessage
 );
 
-router.get("/all-messages", messageController.getAllMessages);
+router.get(
+  "/all-messages",
+  paginate.middleware(
+    config.pagination.defaultPageSize,
+    config.pagination.maxPageSize
+  ),
+  messageController.getAllMessages
+);
 
 export default router;
