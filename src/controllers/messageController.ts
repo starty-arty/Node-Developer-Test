@@ -35,6 +35,23 @@ class MessageController {
       res.status(500).json({ success: false });
     }
   };
+
+  updateMessage = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const response = await this.messageService.updateMessage(
+        Number(req.params.id),
+        req.body.content
+      );
+      if (response.messageFound) {
+        res.status(200).json({ success: true });
+      } else {
+        res.status(404).json({ success: false });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false });
+    }
+  };
 }
 
 export default MessageController;

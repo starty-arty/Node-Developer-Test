@@ -11,6 +11,11 @@ class messageService {
     if (message) return { messageFound: true, data: message.dataValues };
     else return { messageFound: false };
   };
+
+  updateMessage = async (id: number, content: string) => {
+    const response = await db.Messages.update({ content }, { where: { id } });
+    return { messageFound: !!response[0] };
+  };
 }
 
 export default messageService;
