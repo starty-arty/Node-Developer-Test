@@ -19,7 +19,7 @@ module.exports = (sequelize: Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      sender_priviliges: {
+      sender_privileges: {
         type: DataTypes.ENUM("member", "admin"),
         allowNull: false,
       },
@@ -37,6 +37,7 @@ module.exports = (sequelize: Sequelize) => {
       sequelize,
       modelName: "Messages",
       tableName: "messages",
+      timestamps: false,
     }
   );
 
