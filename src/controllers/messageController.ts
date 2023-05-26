@@ -23,7 +23,7 @@ class MessageController {
   getMessage = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const response = await this.messageService.getMessage(
-        Number(req.query.id)
+        Number(req.params.id)
       );
       if (response.messageFound) {
         res.status(200).json({ success: true, data: response.data });
