@@ -68,6 +68,16 @@ class MessageController {
       res.status(500).json({ success: false, error: "Internal server error." });
     }
   };
+
+  getAllMessages = async (req: Request, res: Response) => {
+    try {
+      const response = await this.messageService.getAllMessages();
+      res.status(200).json({ success: true, data: response });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, error: "Internal server error." });
+    }
+  };
 }
 
 export default MessageController;

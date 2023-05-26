@@ -39,4 +39,6 @@ router.delete(
   messageController.deleteMessage
 );
 
+router.get("/all-messages", messageController.getAllMessages);
+
 export default router;

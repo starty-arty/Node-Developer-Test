@@ -1,6 +1,6 @@
 import { param, body } from "express-validator";
 import config from "../config/config";
-import senderPrivileges from "../enums/senderPrivileges";
+import SenderPrivileges from "../enums/senderPrivileges";
 
 const idValidator = param("id").isInt().withMessage("id must be an integer.");
 const contentValidator = body("content")
@@ -11,7 +11,7 @@ const contentValidator = body("content")
     `content cannot be longer than ${config.maxMessageLength} characters.`
   );
 const senderPrivilegesValidator = body("senderPrivileges")
-  .isIn(Object.values(senderPrivileges))
+  .isIn(Object.values(SenderPrivileges))
   .withMessage("Invalid senderPrivileges specified.");
 
 export const createMessageValidator = [

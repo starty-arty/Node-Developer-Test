@@ -1,5 +1,5 @@
 import db from "../models";
-import { Transaction } from "sequelize";
+import { Transaction, Model } from "sequelize";
 
 class messageService {
   createMessage = async (senderPrivileges: string, content: string) => {
@@ -30,6 +30,11 @@ class messageService {
   deleteMessage = async (id: number) => {
     const response = await db.Messages.destroy({ where: { id } });
     return { messageFound: !!response };
+  };
+
+  getAllMessages = async () => {
+    const response = await db.Messages.findAll();
+    return response.map((message: Model) => message.dataValues);
   };
 }
 

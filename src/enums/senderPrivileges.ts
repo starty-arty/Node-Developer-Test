@@ -1,6 +1,6 @@
-enum senderPrivileges {
+enum SenderPrivileges {
   ADMIN = "admin",
   MEMBER = "member",
 }
 
-export default senderPrivileges;
+export default SenderPrivileges;
