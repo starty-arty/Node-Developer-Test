@@ -1,7 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import { connectToDatabase } from "./database/connector";
+import connectToDatabase from "./database/connector";
 import config from "./config/config";
 
 const app: Application = express();
