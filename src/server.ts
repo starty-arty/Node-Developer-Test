@@ -2,7 +2,7 @@ import express, { Application } from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import bodyParser from "body-parser";
-import connectToDatabase from "./database/connector";
+import connectToDatabase from "./databaseConnector";
 import config from "./config/config";
 import messageRouter from "./routers/messageRouter";
 
