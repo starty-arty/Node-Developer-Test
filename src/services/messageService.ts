@@ -1,4 +1,5 @@
 import db from "../models";
+import { Sequelize } from "sequelize";
 import { Transaction, Model } from "sequelize";
 
 class messageService {
@@ -33,7 +34,7 @@ class messageService {
   };
 
   getAllMessages = async () => {
-    const response = await db.Messages.findAll();
+    const response = await db.Messages.findAll({ order: Sequelize.col("id") });
     return response.map((message: Model) => message.dataValues);
   };
 }
