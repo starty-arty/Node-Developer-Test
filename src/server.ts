@@ -1,6 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
+import { Sequelize } from "sequelize";
 import config from "./config/config";
 
 const app: Application = express();

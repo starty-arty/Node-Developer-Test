@@ -1,0 +1,8 @@
+services:
+  database:
+    build: ./src/database
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_PASSWORD}"
+    ports:
+      - "3306:${MYSQL_PORT}"
