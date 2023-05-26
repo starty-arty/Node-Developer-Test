@@ -16,6 +16,11 @@ class messageService {
     const response = await db.Messages.update({ content }, { where: { id } });
     return { messageFound: !!response[0] };
   };
+
+  deleteMessage = async (id: number) => {
+    const response = await db.Messages.destroy({ where: { id } });
+    return { messageFound: !!response };
+  };
 }
 
 export default messageService;

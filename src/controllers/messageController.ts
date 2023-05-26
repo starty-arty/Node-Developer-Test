@@ -52,6 +52,22 @@ class MessageController {
       res.status(500).json({ success: false });
     }
   };
+
+  deleteMessage = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const response = await this.messageService.deleteMessage(
+        Number(req.params.id)
+      );
+      if (response.messageFound) {
+        res.status(200).json({ success: true });
+      } else {
+        res.status(404).json({ success: false });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false });
+    }
+  };
 }
 
 export default MessageController;
