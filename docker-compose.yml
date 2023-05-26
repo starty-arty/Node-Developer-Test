@@ -1,8 +1,12 @@
 services:
   database:
-    build: ./src/database
+    build: ./dockerfiles/database
     environment:
       MYSQL_ROOT_HOST: "%"
       MYSQL_ROOT_PASSWORD: "${MYSQL_PASSWORD}"
     ports:
       - "3306:${MYSQL_PORT}"
+  cache:
+    image: redis:7.2-rc2
+    ports:
+      - "6379:${REDIS_PORT}"

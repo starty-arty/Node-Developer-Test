@@ -11,9 +11,13 @@ export default {
     password: process.env.MYSQL_PASSWORD || "",
     database: process.env.MYSQL_DATABASE || "",
   },
+  cacheConnection: {
+    isCacheEnabled: process.env.ENABLE_CACHE == "true",
+    port: process.env.REDIS_PORT || 6379,
+  },
   maxMessageLength: 200,
   pagination: {
-    defaultPageSize: 10,
+    defaultPageSize: 1,
     maxPageSize: 50,
   },
 };

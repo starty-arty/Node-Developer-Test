@@ -9,7 +9,11 @@ import {
   updateMessageValidator,
 } from "../validators/messageValidators";
 import config from "../config/config";
+import emptyMiddleware from "../middleware/emptyMiddleware";
 
+const cache = require("express-redis-cache")({
+  port: config.cacheConnection.port,
+});
 const router = express.Router();
 const messageController = new MessageController();
 
@@ -47,6 +51,7 @@ router.get(
     config.pagination.defaultPageSize,
     config.pagination.maxPageSize
   ),
+  config.cacheConnection.isCacheEnabled ? cache.route() : emptyMiddleware,
   messageController.getAllMessages
 );
 
