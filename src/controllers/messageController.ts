@@ -10,7 +10,7 @@ class MessageController {
   createMessage = async (req: Request, res: Response) => {
     try {
       const response = await this.messageService.createMessage(
-        req.body.senderPrivileges,
+        req.body.senderPrivilege,
         req.body.content
       );
       res.status(200).json({ success: true, data: response });

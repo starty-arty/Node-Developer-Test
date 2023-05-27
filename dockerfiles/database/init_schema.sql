@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `messages`;
 
 CREATE TABLE `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `sender_privileges` enum('member', 'admin') NOT NULL,
+  `sender_privilege` enum('member', 'admin') NOT NULL,
   `content` text NOT NULL,
   `sent_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)

@@ -20,8 +20,8 @@ module.exports = (sequelize: Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      senderPrivileges: {
-        field: "sender_privileges",
+      senderPrivilege: {
+        field: "sender_privilege",
         type: DataTypes.ENUM("member", "admin"),
         allowNull: false,
       },

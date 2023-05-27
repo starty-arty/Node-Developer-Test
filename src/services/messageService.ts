@@ -4,8 +4,8 @@ import { Transaction, Model } from "sequelize";
 import { PaginationDetails } from "../types";
 
 class messageService {
-  createMessage = async (senderPrivileges: string, content: string) => {
-    const message = await db.Messages.create({ senderPrivileges, content });
+  createMessage = async (senderPrivilege: string, content: string) => {
+    const message = await db.Messages.create({ senderPrivilege, content });
     return { id: message.id };
   };
 

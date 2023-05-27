@@ -10,12 +10,12 @@ const contentValidator = body("content")
   .withMessage(
     `content cannot be longer than ${config.maxMessageLength} characters.`
   );
-const senderPrivilegesValidator = body("senderPrivileges")
+const senderPrivilegeValidator = body("senderPrivilege")
   .isIn(Object.values(SenderPrivileges))
-  .withMessage("Invalid senderPrivileges specified.");
+  .withMessage("Invalid senderPrivilege specified.");
 
 export const createMessageValidator = [
-  senderPrivilegesValidator,
+  senderPrivilegeValidator,
   contentValidator,
 ];
 export const getMessageValidator = [idValidator];
