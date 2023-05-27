@@ -9,11 +9,11 @@ class MessageController {
 
   createMessage = async (req: Request, res: Response) => {
     try {
-      const response = await this.messageService.createMessage(
+      const result = await this.messageService.createMessage(
         req.body.senderPrivilege,
         req.body.content
       );
-      res.status(200).json({ success: true, data: response });
+      res.status(200).json({ success: true, data: result });
     } catch (error) {
       console.error(error);
       res.status(500).json({ success: false, error: "Internal server error." });
@@ -22,11 +22,11 @@ class MessageController {
 
   getMessage = async (req: Request, res: Response) => {
     try {
-      const response = await this.messageService.getMessage(
+      const result = await this.messageService.getMessage(
         Number(req.params.id)
       );
-      if (response.messageFound) {
-        res.status(200).json({ success: true, data: response.data });
+      if (result.messageFound) {
+        res.status(200).json({ success: true, data: result.data });
       } else {
         res.status(404).json({ success: false, error: "Message not found." });
       }
@@ -38,11 +38,11 @@ class MessageController {
 
   updateMessage = async (req: Request, res: Response) => {
     try {
-      const response = await this.messageService.updateMessage(
+      const result = await this.messageService.updateMessage(
         Number(req.params.id),
         req.body.content
       );
-      if (response.messageFound) {
+      if (result.messageFound) {
         res.status(200).json({ success: true });
       } else {
         res.status(404).json({ success: false, error: "Message not found." });
@@ -55,10 +55,10 @@ class MessageController {
 
   deleteMessage = async (req: Request, res: Response) => {
     try {
-      const response = await this.messageService.deleteMessage(
+      const result = await this.messageService.deleteMessage(
         Number(req.params.id)
       );
-      if (response.messageFound) {
+      if (result.messageFound) {
         res.status(200).json({ success: true });
       } else {
         res.status(404).json({ success: false, error: "Message not found." });
@@ -76,21 +76,21 @@ class MessageController {
         offset: Number(req.skip),
       };
 
-      const response = await this.messageService.getAllMessages(
+      const result = await this.messageService.getAllMessages(
         paginationDetails
       );
-      const pageCount = Math.ceil(response.count / paginationDetails.limit);
+      const pageCount = Math.ceil(result.count / paginationDetails.limit);
 
       res.status(200).json({
         success: true,
-        count: response.count,
+        count: result.count,
         next: res.locals.paginate.hasNextPages(pageCount)
           ? res.locals.paginate.href(false)
           : null,
         previous: res.locals.paginate.hasPreviousPages
           ? res.locals.paginate.href(true)
           : null,
-        data: response.rows,
+        data: result.rows,
       });
     } catch (error) {
       console.error(error);
