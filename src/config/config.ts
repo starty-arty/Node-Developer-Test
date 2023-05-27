@@ -20,4 +20,5 @@ export default {
     defaultPageSize: 1,
     maxPageSize: 50,
   },
+  webSocketEvents: ["sendMessage"],
 };

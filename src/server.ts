@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import connectToDatabase from "./databaseConnector";
 import config from "./config/config";
 import messageRouter from "./routers/messageRouter";
+import WebSocketController from "./controllers/websocketController";
 
 const app: Application = express();
 app.use(bodyParser.json());
@@ -17,9 +18,8 @@ const io = new Server(server, {
     origin: config.webSocketOriginWhitelist,
   },
 });
-io.on("connection", (socket) => {
-  console.log(`WebSocket connection established with socket ID ${socket.id}.`);
-});
+const webSocketController = new WebSocketController();
+io.on("connect", (socket) => webSocketController.connected(socket));
 
 connectToDatabase().then(() => {
   server.listen(config.port);

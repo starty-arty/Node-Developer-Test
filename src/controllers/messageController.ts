@@ -3,6 +3,7 @@ import MessageService from "../services/messageService";
 
 class MessageController {
   messageService: MessageService;
+
   constructor() {
     this.messageService = new MessageService();
   }
