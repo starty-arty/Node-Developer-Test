@@ -93,7 +93,7 @@ Sample response:
 
 This API is used to delete a message.
 
-Endpoint: `/message/:id`__
+Endpoint: `/message/:id` <br />
 Request type: `DELETE`
 
 Sample response:
