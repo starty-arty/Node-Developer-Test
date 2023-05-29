@@ -16,6 +16,8 @@ From the root of the repository,
 
 # API Documentation
 
+If you use the `.env` file as is from the Google Drive folder, the APIs will be hosted at `http://localhost:8000`.
+
 ### Create message
 
 This API is used to create a message.
