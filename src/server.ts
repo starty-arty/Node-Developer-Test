@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import connectToDatabase from "./databaseConnector";
 import config from "./config/config";
 import messageRouter from "./routers/messageRouter";
-import WebSocketController from "./controllers/websocketController";
+import WebSocketController from "./controllers/webSocketController";
 
 const app: Application = express();
 app.use(bodyParser.json());
@@ -19,7 +19,7 @@ const io = new Server(server, {
   },
 });
 const webSocketController = new WebSocketController();
-io.on("connect", (socket) => webSocketController.connected(socket));
+io.on("connect", (socket) => webSocketController.connected(io, socket));
 
 connectToDatabase().then(() => {
   server.listen(config.port);

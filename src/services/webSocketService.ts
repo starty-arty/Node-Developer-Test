@@ -1,11 +1,9 @@
-import { Socket } from "socket.io";
+import { Server, Socket } from "socket.io";
 
 class WebSocketService {
-  configureSendMessageEvent = (socket: Socket) => {
+  configureSendMessageEvent = (io: Server, socket: Socket) => {
     socket.on("sendMessage", (senderPrivilege, content) => {
-      console.log(
-        `sendMessage event triggered: ${senderPrivilege} ${content}.`
-      );
+      socket.broadcast.emit("receiveMessage", content);
     });
   };
 }
