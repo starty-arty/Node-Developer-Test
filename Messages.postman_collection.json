@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "cbf9eb77-ca48-44b4-a04c-35bb716ed2ea",
+		"name": "Messages",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17370239"
+	},
+	"item": [
+		{
+			"name": "Create message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"senderPrivilege\": \"admin\",\n    \"content\": \"hi there! :D\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_HOST}}/message",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read message",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_HOST}}/message/a",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"message",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete message",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_HOST}}/message/3",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"message",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update message",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_HOST}}/message/4",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"message",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_HOST}}/all-messages",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"all-messages"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
