@@ -2,6 +2,11 @@
 
 Submission for test assignment.
 
+# Requirements
+
+- [npm](https://www.npmjs.com/)
+- [docker](https://www.docker.com/)
+
 # Installation
 
 Once the repository is cloned, run `npm i` from the root of the repository. Add the `.env` file from the Google Drive folder linked in the email to the root of the repository.
