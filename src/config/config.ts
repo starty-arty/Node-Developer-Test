@@ -17,8 +17,8 @@ export default {
   },
   maxMessageLength: 200,
   pagination: {
-    defaultPageSize: 1,
-    maxPageSize: 50,
+    defaultPageSize: 2,
+    maxPageSize: 10,
   },
   webSocketEvents: ["sendMessage"],
 };
