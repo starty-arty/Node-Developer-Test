@@ -20,8 +20,8 @@ From the root of the repository,
 
 This API is used to create a message.
 
-Endpoint: `/message`
-Request type: `POST`
+Endpoint: `/message` <br />
+Request type: `POST` <br />
 `Content-type`: `application/json`
 
 Sample request:
@@ -48,7 +48,7 @@ Sample response:
 
 This API is used to read a message.
 
-Endpoint: `/message/:id`
+Endpoint: `/message/:id` <br />
 Request type: `GET`
 
 Sample response:
@@ -69,8 +69,8 @@ Sample response:
 
 This API is used to update a message.
 
-Endpoint: `/message/:id`
-Request type: `PATCH`
+Endpoint: `/message/:id` <br />
+Request type: `PATCH` <br />
 `Content-type`: `application/json`
 
 Sample request:
