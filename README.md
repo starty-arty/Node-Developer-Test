@@ -105,3 +105,35 @@ Sample response:
     "success": true
 }
 ```
+
+### Get all messages
+
+This API is used to retrieve all messages. Optional URL parameters `limit` and `page` can be used to specify the maximum number of search results per page and the page number respectively.
+
+Endpoint: `/get-all-messages` <br />
+Request type: `GET`
+
+Sample respose:
+
+```JSON
+{
+    "success": true,
+    "count": 5,
+    "next": "/all-messages?page=2&limit=2",
+    "previous": null,
+    "data": [
+        {
+            "id": 1,
+            "senderPrivilege": "admin",
+            "content": "hey man",
+            "sentAt": "2023-05-26T16:04:33.000Z"
+        },
+        {
+            "id": 2,
+            "senderPrivilege": "member",
+            "content": "hey wassup",
+            "sentAt": "2023-05-26T16:04:33.000Z"
+        }
+    ]
+}
+```
